@@ -24,6 +24,10 @@ inputs:
     description: "The application label keys to sort the results by. If not specified, the results will be sorted by only PipedID and ApplicationName."
     required: false
     default: ""
+  title:
+    description: "The title of the result comment to distinguish comments from multiple projects. "
+    required: false
+    default: ""
 
 runs:
   using: "docker"
@@ -35,7 +39,7 @@ runs:
     - timeout=${{ inputs.timeout }}
     - piped-handle-timeout=${{ inputs.piped-handle-timeout }}
     - sort-label-keys=${{ inputs.sort-label-keys }}
-
+    - title=${{ inputs.title }}
 branding:
   icon: "eye"
   color: "green"
