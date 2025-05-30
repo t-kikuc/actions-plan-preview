@@ -1,33 +1,33 @@
-name: 'PipeCD Plan Preview'
-description: 'Comment PipeCD PlanPreview result on GitHub pull request'
-author: 'PipeCD team'
+name: "PipeCD Plan Preview (debug fork @t-kikuc)"
+description: "[DEBUG] Comment PipeCD PlanPreview result on GitHub pull request"
+author: "t-kikuc"
 
 inputs:
   address:
-    description: 'The address of PipeCD control-plane.'
+    description: "The address of PipeCD control-plane."
     required: true
   api-key:
-    description: 'The API key with READ_WRITE role used by pipectl while communicating with PipeCD control-plane.'
+    description: "The API key with READ_WRITE role used by pipectl while communicating with PipeCD control-plane."
     required: true
   token:
-    description: 'The GITHUB_TOKEN secret used to send comment on pull request.'
+    description: "The GITHUB_TOKEN secret used to send comment on pull request."
     required: true
   timeout:
-    description: 'Maximum amount of time to run. Default is 5m.'
+    description: "Maximum amount of time to run. Default is 5m."
     required: false
     default: 5m
   piped-handle-timeout:
-    description: 'Maximum amount of time to wait for piped handle the plan preview. Default is 5m.'
+    description: "Maximum amount of time to wait for piped handle the plan preview. Default is 5m."
     required: false
     default: 5m
   sort-label-keys:
-    description: 'The application label keys to sort the results by. If not specified, the results will be sorted by only PipedID and ApplicationName.'
+    description: "The application label keys to sort the results by. If not specified, the results will be sorted by only PipedID and ApplicationName."
     required: false
-    default: ''
+    default: ""
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - address=${{ inputs.address }}
     - api-key=${{ inputs.api-key }}
@@ -37,5 +37,5 @@ runs:
     - sort-label-keys=${{ inputs.sort-label-keys }}
 
 branding:
-  icon: 'eye'
-  color: 'green'
+  icon: "eye"
+  color: "green"
